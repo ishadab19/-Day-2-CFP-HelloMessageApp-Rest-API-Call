@@ -1,10 +1,7 @@
 package com.messagingapp.hellomessagingapp.controller;
 
 import org.springframework.context.annotation.Lazy;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloRestController {
@@ -18,8 +15,7 @@ public class HelloRestController {
         return "My name is Shadab";
     }
 
-    //UC-2
-
+    //UC-2//Passing name as Query parameter
     @RequestMapping(value = "/query",method = RequestMethod.GET)
     public String sayHelloAgain(@RequestParam(value = "name")String name){
         return "Hello " +name+ " From BridgeLabz!!!!";
@@ -30,6 +26,15 @@ public class HelloRestController {
         return "Hello My Mobile Number is ==> " +MobileNumber;
     }
 
+    //UC-3 //PathVariable
+    @RequestMapping(value = "/path/{name}",method = RequestMethod.GET)
+    public String passName(@PathVariable String name){
+        return "Hello "+name+ "!!";
+    }
 
+    @RequestMapping(value = "/path1/{userId}",method = RequestMethod.PUT)
+    public String passDetail(@PathVariable("userId")int userId){
+        return "This is My UserID " + userId;
+    }
 
     }
