@@ -1,10 +1,15 @@
 package com.messagingapp.hellomessagingapp.controller;
 
+import com.messagingapp.hellomessagingapp.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+
 public class HelloRestController {
+
+
     //UC-1
     @RequestMapping(value = "/hello")
     public String hello() {
@@ -35,6 +40,13 @@ public class HelloRestController {
     @RequestMapping(value = "/path1/{userId}",method = RequestMethod.PUT)
     public String passDetail(@PathVariable("userId")int userId){
         return "This is My UserID " + userId;
+    }
+
+    //UC-4 Passing FirstName and LastName In Body
+    @RequestMapping(value = "/post",method = RequestMethod.POST)
+    public String details(@RequestBody User user){
+        return "Hello "+user.getFirstName()+" "+user.getLastName();
+        
     }
 
     }
