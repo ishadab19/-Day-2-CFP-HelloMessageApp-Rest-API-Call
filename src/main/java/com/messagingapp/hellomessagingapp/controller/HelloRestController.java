@@ -6,9 +6,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-
 public class HelloRestController {
-
 
     //UC-1
     @RequestMapping(value = "/hello")
@@ -46,7 +44,12 @@ public class HelloRestController {
     @RequestMapping(value = "/post",method = RequestMethod.POST)
     public String details(@RequestBody User user){
         return "Hello "+user.getFirstName()+" "+user.getLastName();
-        
+    }
+
+    //UC-5 Passing firstName in PathVariable and lastName in Query Param
+    @RequestMapping(value = "/path2/{firstName}",method = RequestMethod.PUT)
+    public String detail(@PathVariable("firstName")String firstName,@RequestParam(value = "lastName")String lastName){
+        return "hello "+firstName +" "+lastName +" From BridgeLabz";
     }
 
     }
